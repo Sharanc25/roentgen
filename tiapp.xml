@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <ti:app xmlns:ti='http://ti.appcelerator.org'>
 <!-- These values are edited/maintained by TideSDK Developer -->
-<id>com.hollowbubble.com</id>
-<name>Load Calculator</name>
+<id>com.bouncingelectron.com</id>
+<name>Rontgen</name>
 <version>1.0</version>
-<publisher>KarthiKeyan</publisher>
-<url>https://www.facebook.com/karthi.keyan.739</url>
+<publisher>Bouncing Electron</publisher>
+<url>www.bouncingelectron.com</url>
 <icon>default_app_logo.png</icon>
 <copyright>2014 by KarthiKeyan</copyright>
 <!-- Window Definition - these values can be edited -->

@@ -1,10 +1,10 @@
 #appname:Load Calculator
-#appid:com.hollowbubble.com
-#publisher:KarthiKeyan
+#appid:com.bouncingelectron.com
+#publisher:Bouncing Electron
 #image:default_app_logo.png
-#url:https://www.facebook.com/karthi.keyan.739
+#url:www.bouncingelectron.com
 #guid:db26feef-0780-41c7-892c-d376cbf2167c
-#desc:Load Calculator app for ITTI
+#desc:Rontgen
 #type:desktop
 runtime:1.3.1-beta
 app:1.3.1-beta
