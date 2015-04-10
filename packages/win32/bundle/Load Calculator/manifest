@@ -1,0 +1,19 @@
+#appname: Load Calculator
+#appid: com.hollowbubble.com
+#guid: db26feef-0780-41c7-892c-d376cbf2167c
+#version: 1.0
+#image: default_app_logo.png
+#publisher: KarthiKeyan
+#url: https://www.facebook.com/karthi.keyan.739
+runtime: 1.3.1-beta
+app: 1.3.1-beta
+codec: 1.3.1-beta
+database: 1.3.1-beta
+filesystem: 1.3.1-beta
+media: 1.3.1-beta
+monkey: 1.3.1-beta
+network: 1.3.1-beta
+platform: 1.3.1-beta
+process: 1.3.1-beta
+ui: 1.3.1-beta
+worker: 1.3.1-beta
