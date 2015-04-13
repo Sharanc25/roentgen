@@ -4,10 +4,10 @@
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
 </script>
-<script src='js/MathJax/MathJax.js'></script>
+<script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
+<script src='js/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <link href="styles/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="styles/main.css" rel="stylesheet" type="text/css">
-<link href="styles/bootstrap/css/bootstrap-reset.css" rel="stylesheet">
 </head>
 <body>
 <div id="windowTitleBar">
@@ -16,98 +16,144 @@
   <div id="windowMinimize" class="windowMaxMinButtons"><a>_</a></div>
 </div>
 <div class="content" >
-<main>
-<section id="page-1" class="main-page">
+  <section id="menu">
+    <ul>
+      <li>Scherrer Equation</li>
+      <li>Modified Scherrer Equation</li>
+      <li>Williamson Hall</li>
+      <li>Dislocation Density</li>
+    </ul>
+  </section>
+  <section id="scherrer-equation-section">
+    <div class="scherrer-equation">
+      <div style="font-size: 2em; text-align:center" class="alert alert-info" role="alert"> $ t = \frac{k \times \lambda}{\beta \times cos\theta}$ </div>
+      <div class="alert alert-warning" role="alert">where $t$ is the cystallite size,</div>
+      <form id="scherrer-equation-form" autocomplete="on">
+        <p>
+        <div class="input-group">
+          <label for="number" class="input-group-addon">Shape Factor (k) :</label>
+          <input type="number" class="form-control" name="Shape Factor" id="shape-factor" min="0.89" max="0.94" step="0.001" placeholder="Select One">
+          <span class="input-group-addon">Units If Necessary</span> </div>
+        </p>
+        <p>
+        <div class="input-group">
+          <label for="number2" class="input-group-addon">Wavelength of target material :</label>
+          <select class="btn btn-default dropdown-toggle form-control" id="wavelength">
+            <option value="0.056">Silver (0.056)</option>
+            <option value="0.071">Molybdenum (0.071)</option>
+            <option value="0.154">Copper (0.154)</option>
+            <option value="0.179">Cobalt (0.179)</option>
+            <option value="0.194">Iron (0.194)</option>
+            <option value="0.229">Chromium (0.229)</option>
+            <option value="others">Others</option>
+          </select>
+          <input type="number" name="Wavelength" id="wavelength-other" class="form-control" placeholder="Select One">
+          <span class="input-group-addon">&lambda;(nm)</span> </div>
+        </p>
+        <p>
+        <div class="input-group">
+          <label for="number3" class="input-group-addon">Peak Width :</label>
+          <input type="number" class="form-control" name="Peak Width" id="peak-width" min="0" placeholder="Select One">
+          <span class="input-group-addon"> &beta; (&deg;)</span> </div>
+        </p>
+        <p>
+        <div class="input-group">
+          <label for="number4" class="input-group-addon" >Peak Position :</label>
+          <input type="number" name="Peak Position" id="peak-position" min="0" class="form-control" placeholder="Select One">
+          <span class="input-group-addon">2&theta; (&deg;)</span> </div>
+        </p>
+        <input id="scherrer-calculate" type="submit" class="btn btn-info">
+      </form>
+      <div id="scherrer-result">Crystallite Size = <span> </span></div>
+    </div>
+  </section>
+<section id="modified-scherrer-equation-section">
 <div class="scherrer-equation">
-<div style="font-size: 2em; text-align:center" class="alert alert-info" role="alert">
+<div style="font-size: 2em; text-align:center">
 $ t = \frac{k \times \lambda}{\beta \times cos\theta}$
 </div>
- <div class="alert alert-warning" role="alert">where $t$ is the cystallite size,</div>
+where 
+$t$ is the cystallite size,
 
-  <form id="scherrer-equation-form" autocomplete="on">
-    <p>
-         
-         <div class="input-group">   
-        <label for="number" class="input-group-addon">Shape Factor (k) :</label>
-        <input type="number" class="form-control" name="Shape Factor" id="shape-factor" min="0.89" max="0.94" step="0.001" placeholder="Select One">
-         <span class="input-group-addon">Units If Necessary</span>
-         </div>
-            
-    </p>
-
-    <p>
-
-       <div class="input-group">     
-      <label for="number2" class="input-group-addon">Wavelength of target material :</label>
-      <select class="btn btn-default dropdown-toggle form-control" id="wavelength">
-        <option value="0.056">Silver (0.056)</option>
-        <option value="0.071">Molybdenum (0.071)</option>
-        <option value="0.154">Copper (0.154)</option>
-        <option value="0.179">Cobalt (0.179)</option>
-        <option value="0.194">Iron (0.194)</option>
-        <option value="0.229">Chromium (0.229)</option>
-        <option value="others">Others</option>
-      </select>
-      <input type="number" name="Wavelength" id="wavelength-other" class="form-control" placeholder="Select One">
-      <span class="input-group-addon">&lambda;(nm)</span>
-</div>    
-    </p>
-    <p>
-
-        
-        <div class="input-group">      
-        <label for="number3" class="input-group-addon">Peak Width :</label>
-        <input type="number" class="form-control" name="Peak Width" id="peak-width" min="0" placeholder="Select One"> 
-        <span class="input-group-addon"> &beta; (&deg;)</span>
-        </div>    
-      
-    </p>
-    <p>
-      
-        <div class="input-group">
-        <label for="number4" class="input-group-addon" >Peak Position :</label>
-        <input type="number" name="Peak Position" id="peak-position" min="0" class="form-control" placeholder="Select One">
-        <span class="input-group-addon">2&theta; (&deg;)</span>
-        </div>
-        
-
-    </p>
-    <input id="scherrer-calculate" type="submit" class="btn btn-info">
-    
-  </form>
-  
-  <div id="scherrer-result">Crystallite Size = <span> </span></div>
+<form id="williamson-hall-form" autocomplete="on">
+  <table width="100%" border="1">
+    <tr>
+      <th rowspan="2" scope="col"><div align="center">S.NO.</div></th>
+      <th rowspan="2" scope="col"><div align="center">Base Metal</div>
+       <div align="center">FWHM</div></th>
+      <th colspan="2" scope="col"><div align="center">Observed</div></th>
+      <th rowspan="2"><div align="center">&beta;</div>
+        <div align="center"></div></th>
+      <th rowspan="2"><div align="center">ln &beta;R</div>
+        <div align="center"></div></th>
+      <th rowspan="2"><div align="center">ln(1/cos&theta;)</div>
+        <div align="center"></div></th>
+    </tr>
+    <tr>
+      <td><div align="center">2&theta;</div></td>
+      <td><div align="center">FWHM</div></td>
+    </tr>
+    <tr>
+      <th scope="row"><div align="center">1</div></th>
+      <td><div align="center">
+          <input class="base-metal fwhm" type="number" min="0">
+        </div></td>
+      <td><div align="center">
+          <input class="observed x-position" type="number" min="0">
+        </div></td>
+      <td><div align="center">
+          <input class="observed fwhm" type="number" min="0">
+        </div></td>
+      <td class="corrected-fwhm"><div align="center"></div></td>
+      <td class="y-axis"><div align="center"></div></td>
+      <td class="x-axis"><div align="center"></div></td>
+    </tr>
+    <tr>
+      <th scope="row"><div align="center">2</div></th>
+      <td><div align="center">
+          <input class="base-metal fwhm" type="number" min="0">
+        </div></td>
+      <td><div align="center">
+          <input class="observed x-position" type="number" min="0">
+        </div></td>
+      <td><div align="center">
+          <input class="observed fwhm" type="number" min="0">
+        </div></td>
+      <td class="corrected-fwhm"><div align="center"></div></td>
+      <td class="y-axis"><div align="center"></div></td>
+      <td class="x-axis"><div align="center"></div></td>
+    </tr>
+    <tr>
+      <th scope="row"><div align="center">3</div></th>
+      <td><div align="center">
+          <input class="base-metal fwhm" type="number" min="0">
+        </div></td>
+      <td><div align="center">
+          <input class="observed x-position" type="number" min="0">
+        </div></td>
+      <td><div align="center">
+          <input class="observed fwhm" type="number" min="0">
+        </div></td>
+      <td class="corrected-fwhm"><div align="center"></div></td>
+      <td class="y-axis"><div align="center"></div></td>
+      <td class="x-axis"><div align="center"></div></td>
+    </tr>
+  </table>
+  <p>
+    <input id="scherrer_modified_calculate" type="submit" value="Calculate">
+  </p>
+</form>
+<div id="scherrer-modified-result">
+  <p>Crystallite Size = <span class="crystallite-size"> </span></p>
 </div>
 
-<!--      <div class="modified-scherrer-equation">
-        <form id="modified-scherrer-equation-form" autocomplete="on">
-          <table class="hidden">
-            <thead>
-              <tr>
-                <th scope="col">S.No.</th>
-                <th scope="col">Material Details</th>
-                <th scope="col">Weight Per Item (Tonnes)</th>
-                <th scope="col">Quantity for specified Tonnes</th>
-                <th scope="col">Case Config</th>
-                <th scope="col">Total Weight</th>
-              </tr>
-            </thead>
-            <tbody>
-            </tbody>
-          </table>
-        </form>
-      </div>
-    </section>
-  </main>
-</div>--> 
-<script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
-<script src="js/jquery-1.8.3.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/jquery-linenumbers.js"></script> 
+</section>
+</div>
+<script src="stylesbootstrap/js/bootstrap.min.js"></script> 
 <script type="text/javascript" src="js/ui.js"></script> 
-<script type="text/javascript" src="js/calc.js"></script> 
-<script type="text/javascript" src="js/db.js"></script>
-<script type="text/javascript" src="js/scherrer.js"></script>
+<script type="text/javascript" src="js/common_functions.js"></script> 
+<script type="text/javascript" src="js/scherrer.js"></script> 
+<script type="text/javascript" src="js/scherrer_modified.js"></script>
 <script>
 //$("select.chosen").chosen();
 </script>
