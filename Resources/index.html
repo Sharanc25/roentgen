@@ -6,6 +6,13 @@
 </script>
 <script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
 <script src='js/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src="styles/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/ui.js"></script>
+<script type="text/javascript" src="js/common_functions.js"></script>
+<script type="text/javascript" src="js/scherrer.js"></script>
+<script type="text/javascript" src="js/scherrer_modified.js"></script>
+<script type="text/javascript" src="js/williamson_hall.js"></script>
+<script type="text/javascript" src="js/dislocation_density.js"></script>
 <link href="styles/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="styles/main.css" rel="stylesheet" type="text/css">
 </head>
@@ -17,12 +24,12 @@
 </div>
 <div class="content" >
 <section id="menu">
-  <ul>
-    <li>Scherrer Equation</li>
-    <li>Modified Scherrer Equation</li>
-    <li>Williamson Hall</li>
-    <li>Dislocation Density</li>
-  </ul>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#">Scherrer Equation</a></li>
+      <li><a href="#">Modified Scherrer Equation</a></li>
+      <li><a href="#">Williamson Hall</a></li>
+      <li><a href="#">Dislocation Density</a></li>
+    </ul>
 </section>
 <section id="scherrer-equation-section">
   <div class="scherrer-equation">
@@ -143,7 +150,7 @@
   <div id="scherrer-modified-result">
     <p>Crystallite Size = <span class="crystallite-size"> </span></p>
   </div>
-</section>
+  </section>
   <section id="modified-scherrer-equation-section">
     <form id="williamson-hall-form" autocomplete="on">
       <table width="100%" border="1">
@@ -221,82 +228,69 @@
     </div>
   </section>
   <section id="dislocation-density-section">
-  
-<form id="dislocation-density-form" autocomplete="on">
-  <p>
-    <label for="fwhm">FWHM (&Delta;d):</label>
-    <input type="number" name="number" id="fwhm">
-  </p>
-  <p>
-    <label for="d-spacing">d-spacing (nm):</label>
-    <input type="number" name="number2" id="d-spacing">
-  </p>
-  <p>
-    <label for="lattice-parameter">Lattice Parameter (nm):</label>
-    <input type="number" name="number3" id="lattice-parameter">
-  </p>
-  <p>
-    <label for="h">h:</label>
-    <input type="number" name="number4" id="h">
-  </p>
-  <p>
-    <label for="k">k:</label>
-    <input type="number" name="number5" id="k">
-  </p>
-  <p>
-    <label for="l">l:</label>
-    <input type="number" name="number6" id="l">
-  </p>
-  <p>
-    <label for="a_constant">a:</label>
-    <input type="number" name="number7" id="a_constant">
-  </p>
-  <p>
-    <label for="b_constant">b:</label>
-    <input type="number" name="number8" id="b_constant">
-  </p>
-  <p>
-    <label for="c_constant">c:</label>
-    <input type="number" name="number9" id="c_constant">
-  </p>
-  <p>
-    <label for="d_constant">d:</label>
-    <input type="number" name="number10" id="d_constant">
-  </p>
-  <p>
-    <label for="c11">Youngs Modulus, c<sub>11</sub>:</label>
-    <input type="number" name="number11" id="c11">
-  </p>
-  <p>
-    <label for="c12">Rigidity Modulus, c<sub>12</sub>:</label>
-    <input type="number" name="number12" id="c12">
-  </p>
-  <p>
-    <label for="c44">Bulk Modulus, c<sub>44</sub>:</label>
-    <input type="number" name="number13" id="c44">
-  </p>
-  <p>
-    <input id="dislocation-density-calculate" type="submit" value="Calculate">
-  </p>
-  </p>
-</form>
-<div id="dislocation-density-result">
-  <p>Dislocation Density = <span class="dislocation-density"> </span></p>
+    <form id="dislocation-density-form" autocomplete="on">
+      <p>
+        <label for="fwhm">FWHM (&Delta;d):</label>
+        <input type="number" name="number" id="fwhm">
+      </p>
+      <p>
+        <label for="d-spacing">d-spacing (nm):</label>
+        <input type="number" name="number2" id="d-spacing">
+      </p>
+      <p>
+        <label for="lattice-parameter">Lattice Parameter (nm):</label>
+        <input type="number" name="number3" id="lattice-parameter">
+      </p>
+      <p>
+        <label for="h">h:</label>
+        <input type="number" name="number4" id="h">
+      </p>
+      <p>
+        <label for="k">k:</label>
+        <input type="number" name="number5" id="k">
+      </p>
+      <p>
+        <label for="l">l:</label>
+        <input type="number" name="number6" id="l">
+      </p>
+      <p>
+        <label for="a_constant">a:</label>
+        <input type="number" name="number7" id="a_constant">
+      </p>
+      <p>
+        <label for="b_constant">b:</label>
+        <input type="number" name="number8" id="b_constant">
+      </p>
+      <p>
+        <label for="c_constant">c:</label>
+        <input type="number" name="number9" id="c_constant">
+      </p>
+      <p>
+        <label for="d_constant">d:</label>
+        <input type="number" name="number10" id="d_constant">
+      </p>
+      <p>
+        <label for="c11">Youngs Modulus, c<sub>11</sub>:</label>
+        <input type="number" name="number11" id="c11">
+      </p>
+      <p>
+        <label for="c12">Rigidity Modulus, c<sub>12</sub>:</label>
+        <input type="number" name="number12" id="c12">
+      </p>
+      <p>
+        <label for="c44">Bulk Modulus, c<sub>44</sub>:</label>
+        <input type="number" name="number13" id="c44">
+      </p>
+      <p>
+        <input id="dislocation-density-calculate" type="submit" value="Calculate">
+      </p>
+      </p>
+    </form>
+    <div id="dislocation-density-result">
+      <p>Dislocation Density = <span class="dislocation-density"> </span></p>
+    </div>
+  </section>
 </div>
-  
-</section>
-
-  
-  
-</div>
-<script src="stylesbootstrap/js/bootstrap.min.js"></script> 
-<script type="text/javascript" src="js/ui.js"></script> 
-<script type="text/javascript" src="js/common_functions.js"></script> 
-<script type="text/javascript" src="js/scherrer.js"></script> 
-<script type="text/javascript" src="js/scherrer_modified.js"></script> 
-<script type="text/javascript" src="js/williamson_hall.js"></script> 
-<script type="text/javascript" src="js/dislocation_density.js"></script>
-
 <script>
 //$("select.chosen").chosen();
 </script>

@@ -9,7 +9,7 @@ html, body {
 	cursor: default;
 }
 body {
-	overflow: hidden;
+	overflow: scroll;
 }
 footer {
 	float: right;
@@ -79,25 +79,6 @@ form input {
 	font: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
 	font-size: 16px;
 	font-weight: bold;
-}
-textarea, input, button, textarea:active {
-	outline: none;
-}
-/*Text-Area Styling*/
-div.bulk-product-wrapper {
-	width: 340px;
-	margin: auto;
-}
-textarea {
-	width: 220pxpx;
-	height: 120px;
-	font-size: 20px;
-	padding: 10px;
-	line-height: 30px;
-	border-radius: 3px;
-	border: 1px solid #aaaaaa;
-	margin-left: 25px;
-	resize: none;
 }
 /*========================================================================================================================*/
 
@@ -192,4 +173,16 @@ tr:nth-child(odd) {
 }
 tr:nth-child(even) {
 	background-color: #a9ce64;
+}
+/*=================================================== Navigation =========================================================*/
+section {
+float:left;
+margin-right: 25px;
+}
+section#menu {
+  height: 100%;
+  border-right: thin solid #ccc;
+}
+section#menu ul li {
+  margin-right: 0;
 }
