@@ -2,10 +2,9 @@
 
 $("input[type=submit]#williamson-hall-calculate").click(function(event){
 	  event.preventDefault();
-	  $.williamson_hall();
-	  var lattice_strain = $.williamson_hall_table();
-	  $("div#williamson-hall-calculate div.lattice-strain span").text(crystallite_size.toFixed(5) + " nm");
-	  $("div#williamson-hall-calculate div.crystallite-size span").text(crystallite_size.toFixed(5) + " nm");
+	  var result = $.williamson_hall();
+	  $("div#williamson-hall-result span.lattice-strain").text(result['lattice_strain'].toFixed(5) + " nm");
+	  $("div#williamson-hall-result span.crystallite-size").text(result['crystallite_size'].toFixed(5) + " nm");
 });
 
 
@@ -17,7 +16,7 @@ var corrected_fwhm = [],
 	x_axis = [];
 	
 
-$("tr").each(function(index, element) {
+$("table#williamson-hall-table tr").each(function(index, element) {
 	
 		 corrected_fwhm = [
 		                    ($.toRadians($(this).find("input.observed.fwhm").val())) - 
@@ -35,8 +34,6 @@ $("tr").each(function(index, element) {
 
 }
 
-
-
 $.williamson_hall = function(){ 
    $.williamson_hall_table();
     var length = 0 
@@ -49,7 +46,9 @@ $.williamson_hall = function(){
 		numerator = 0,
 		denominator = 0,
 		slope = 0
-		intercept = 0;
+		intercept = 0,
+		lattice_strain = 0,
+		crystallite_size = 0;
 
    $("td.x-axis").each(function(index, element) {
 		  length = index + 1;
@@ -75,7 +74,11 @@ $.williamson_hall = function(){
 
   intercept = y_mean - (slope * x_mean);
    
-  alert(slope); 
+   var result = {lattice_strain: slope, 
+                 crystallite_size: intercept 
+				};
+   
+  return(result); 
 }
 
 

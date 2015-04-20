@@ -1,26 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
-</script>
 <script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
-<script src='js/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 <script src="styles/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/ui.js"></script>
-<script type="text/javascript" src="js/common_functions.js"></script>
-<script type="text/javascript" src="js/scherrer.js"></script>
-<script type="text/javascript" src="js/scherrer_modified.js"></script>
-<script type="text/javascript" src="js/williamson_hall.js"></script>
-<script type="text/javascript" src="js/dislocation_density.js"></script>
 <link href="styles/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="styles/main.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="windowTitleBar">
-  <div id="mainTitle"><a>Rontgen</a></div>
-  <div id="windowClose" class="windowMaxMinButtons"><a>X</a></div>
-  <div id="windowMinimize" class="windowMaxMinButtons"><a>_</a></div>
+  <div id="mainTitleBar">
+       Rontgen
+      <div id="windowClose" class="windowMaxMinButtons">X</div>
+      <div id="windowMinimize" class="windowMaxMinButtons">_</div> <!-- X comes first to overcome float right problem -->
+  </div>
 </div>
 <div class="content" >
 <section id="menu">
@@ -54,19 +46,19 @@
           <option value="0.229">Chromium (0.229)</option>
           <option value="others">Others</option>
         </select>
-        <input type="number" name="Wavelength" id="wavelength-other" class="form-control" placeholder="Select One">
+        <input type="number" step="any" name="Wavelength" id="wavelength-other" class="form-control" placeholder="Select One">
         <span class="input-group-addon">&lambda;(nm)</span> </div>
       </p>
       <p>
       <div class="input-group">
         <label for="number3" class="input-group-addon">Peak Width :</label>
-        <input type="number" class="form-control" name="Peak Width" id="peak-width" min="0" placeholder="Select One">
+        <input type="number" step="any" class="form-control" name="Peak Width" id="peak-width" min="0" placeholder="Select One">
         <span class="input-group-addon"> &beta; (&deg;)</span> </div>
       </p>
       <p>
       <div class="input-group">
         <label for="number4" class="input-group-addon" >Peak Position :</label>
-        <input type="number" name="Peak Position" id="peak-position" min="0" class="form-control" placeholder="Select One">
+        <input type="number" step="any" name="Peak Position" id="peak-position" min="0" class="form-control" placeholder="Select One">
         <span class="input-group-addon">2&theta; (&deg;)</span> </div>
       </p>
       <input id="scherrer-calculate" type="submit" class="btn btn-info">
@@ -76,7 +68,7 @@
 </section>
 <section id="modified-scherrer-equation-section">
 <form id="modified-scherrer-form" autocomplete="on">
-  <table width="100%" border="1">
+  <table id="modified-scherrer-table" width="100%" border="1" class="table table-striped table-hover table-bordered">
     <tr>
       <th rowspan="2" scope="col"><div align="center">S.NO.</div></th>
       <th rowspan="2" scope="col"><div align="center">Base Metal</div>
@@ -149,7 +141,7 @@
 </section>
  <section id="williamson-hall-section">
   <form id="williamson-hall-form" autocomplete="on">
-  <table width="100%" border="1">
+  <table id="williamson-hall-table" width="100%" border="1" class="table table-striped table-hover table-bordered">
     <tr>
       <th rowspan="2" scope="col"><div align="center">S.NO.</div></th>
       <th colspan="2" scope="col"><div align="center">Base Metal</div></th>
@@ -241,91 +233,91 @@
   <p>
   <div class="input-group">
     <label for="fwhm" class="input-group-addon">FWHM:</label>
-    <input type="number" name="number" id="fwhm" class="form-control" >
+    <input type="number" step="any" name="number" id="fwhm" class="form-control" >
     <span class="input-group-addon"> (&Delta;d)</span>
     </div>
   </p>
   <p>
   <div class="input-group">
     <label for="d-spacing" class="input-group-addon">d-spacing:</label>
-    <input type="number" name="number2" id="d-spacing" class="form-control">
+    <input type="number" step="any" name="number2" id="d-spacing" class="form-control">
     <span class="input-group-addon">(Nano Meters)</span>
     </div>
   </p>
   <p>
   <div class="input-group">
     <label for="lattice-parameter" class="input-group-addon" class="input-group-addon">Lattice Parameter (nm):</label>
-    <input type="number" name="number3" id="lattice-parameter" class="form-control">
+    <input type="number" step="any" name="number3" id="lattice-parameter" class="form-control">
     <span class="input-group-addon">(Nano Meters)</span>
     </div>
   </p>
   <p>
   <div class="input-group">
     <label for="h" class="input-group-addon">h:</label>
-    <input type="number" name="number4" id="h" class="form-control">
+    <input type="number" step="any" name="number4" id="h" class="form-control">
     <span class="input-group-addon">Units if Any</span>
     </div>
   </p>
   <p>
   <div class="input-group">
     <label for="k" class="input-group-addon">k:</label>
-    <input type="number" name="number5" id="k" class="form-control">
+    <input type="number" step="any" name="number5" id="k" class="form-control">
     <span class="input-group-addon">Units if Any</span>
     </div>
   </p>
   <p>
   <div class="input-group">
     <label for="l" class="input-group-addon">l:</label>
-    <input type="number" name="number6" id="l" class="form-control">
+    <input type="number" step="any" name="number6" id="l" class="form-control">
         <span class="input-group-addon">Units if Any</span>
     </div>
   </p>
   <p>
   <div class="input-group">
     <label for="a_constant" class="input-group-addon">a:</label>
-    <input type="number" name="number7" id="a_constant" class="form-control">
+    <input type="number" step="any" name="number7" id="a_constant" class="form-control">
         <span class="input-group-addon">Units if Any</span>
     </div>
   </p>
   <p>
   <div class="input-group">
     <label for="b_constant" class="input-group-addon">b:</label>
-    <input type="number" name="number8" id="b_constant" class="form-control">
+    <input type="number" step="any" name="number8" id="b_constant" class="form-control">
         <span class="input-group-addon">Units if Any</span>
     </div>
   </p>
   <p>
   <div class="input-group">
     <label for="c_constant" class="input-group-addon">c:</label>
-    <input type="number" name="number9" id="c_constant" class="form-control">
+    <input type="number" step="any" name="number9" id="c_constant" class="form-control">
         <span class="input-group-addon">Units if Any</span>
     </div>
   </p>
   <p>
   <div class="input-group">
     <label for="d_constant" class="input-group-addon">d:</label>
-    <input type="number" name="number10" id="d_constant" class="form-control">
+    <input type="number" step="any" name="number10" id="d_constant" class="form-control">
         <span class="input-group-addon">Units if Any</span>
     </div>
   </p>
   <p>
   <div class="input-group">
     <label for="c11" class="input-group-addon">Youngs Modulus, c<sub>11</sub>:</label>
-    <input type="number" name="number11" id="c11" class="form-control">
+    <input type="number" step="any" name="number11" id="c11" class="form-control">
             <span class="input-group-addon">Units if Any</span>
     </div>
   </p>
   <p>
   <div class="input-group">
     <label for="c12" class="input-group-addon">Rigidity Modulus, c<sub>12</sub>:</label>
-    <input type="number" name="number12" id="c12" class="form-control">
+    <input type="number" step="any" name="number12" id="c12" class="form-control">
             <span class="input-group-addon">Units if Any</span>
     </div>
   </p>
   <p>
   <div class="input-group">
     <label for="c44" class="input-group-addon">Bulk Modulus, c<sub>44</sub>:</label>
-    <input type="number" name="number13" id="c44" class="form-control">
+    <input type="number" step="any" name="number13" id="c44" class="form-control">
         <span class="input-group-addon">Units if Any</span>
     </div>
   </p>
@@ -339,8 +331,15 @@
 </div>
   </section>
 </div>
-<script>
-//$("select.chosen").chosen();
+<!--<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
 </script>
+<script src='js/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>-->
+<script type="text/javascript" src="js/ui.js"></script>
+<script type="text/javascript" src="js/common_functions.js"></script>
+<script type="text/javascript" src="js/scherrer.js"></script>
+<script type="text/javascript" src="js/scherrer_modified.js"></script>
+<script type="text/javascript" src="js/williamson_hall.js"></script>
+<script type="text/javascript" src="js/dislocation_density.js"></script>
 </body>
 </html>

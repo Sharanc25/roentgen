@@ -7,21 +7,15 @@
 <publisher>Bouncing Electron</publisher>
 <url>www.bouncingelectron.com</url>
 <icon>default_app_logo.png</icon>
-<copyright>2014 by KarthiKeyan</copyright>
+<copyright>2015 by Peppy Codes</copyright>
 <!-- Window Definition - these values can be edited -->
 <window>
 <id>initial</id>
 <title>Rontgen</title>
 <url>app://index.html</url>
-<width>1220</width>
-<max-width>3000</max-width>
-<min-width>0</min-width>
-<height>655</height>
-<max-height>3000</max-height>
-<min-height>0</min-height>
-<fullscreen>false</fullscreen>
+<fullscreen>true</fullscreen>
 <resizable>true</resizable>
-<chrome scrollbars="false">false</chrome>
+<chrome scrollbars="true">false</chrome>
 <maximizable>true</maximizable>
 <minimizable>true</minimizable>
 <closeable>true</closeable>

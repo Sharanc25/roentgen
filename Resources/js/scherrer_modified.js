@@ -16,7 +16,7 @@ var corrected_fwhm = [],
 	x_axis = [];
 	
 
-$("tr").each(function(index, element) {
+$("table#modified-scherrer-table tr").each(function(index, element) {
 	
 		 corrected_fwhm = [
 		                    ($.toRadians($(this).find("input.observed.fwhm").val())) - 

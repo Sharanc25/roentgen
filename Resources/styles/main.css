@@ -21,15 +21,14 @@ div#windowTitleBar {
 	background-color:#f0f0f0;
 	margin-bottom:10px;
 }
-div#mainTitle a {
+div#mainTitleBar {
 	width: 100%;
 	text-align: center;
-	padding-top: 5px;
+	line-height: 30px;  /* To vertically align text - height same as div#windowTitleBar height */
 }
-div.windowMaxMinButtons a, div#mainTitle a {
+div.windowMaxMinButtons , div#mainTitle  {
 	-webkit-user-select: none;
 	cursor: default;
-	position: absolute;
 }
 div.windowMaxMinButtons {
 	width: 30px;
@@ -39,10 +38,6 @@ div.windowMaxMinButtons {
 /*div#windowClose {
 	background-color: #ccc;
 }*/
-div.windowMaxMinButtons a {
-	position: absolute;
-	margin: 5px 0 0 10px;
-}
 div#windowClose:hover {
 	background-color: #e04343;
 	color: #FFF;
@@ -109,78 +104,14 @@ button:disabled {
 }
 /*========================================================================================================================*/
 /*Table Styling*/
-div.product-calculator-wrapper {
-	height: 370px;
-	margin: auto;
-	overflow: auto;
-}
-table {
-	width: auto;
-	border: thin;
-	margin: auto;
-	font-family: Georgia, serif;
-	font-size: 18px;
-	font-style: normal;
-	font-weight: normal;
-	letter-spacing: -1px;
-	line-height: 1.2em;
-	border-collapse: collapse;
-	text-align: center;
-}
-table.hidden {
-	display: none;
-}
-table caption div {
-	color: #FFFFFF;
-	display:block;
-    float: right;
-    padding:10px 0;
-	width:124px;
-	background-color:#10689a;
-}
-/*table caption {
-	height: auto;
-	position: fixed;
-}
-table thead{
-  position:fixed;
-}*/
-table thead tr th {
-	padding: 10px;
-	color: #fff;
-	font-size: 20px;
-	background-color: #4ea233;
-	font-weight: normal;
-	border: 1px solid #53ab30;
-}
-table tbody tr td {
-	padding: 10px 0;
-	border-right: 1px dotted #999;
-	text-transform: uppercase;
-	color: #333;
-}
-table tbody tr td.material-details span {
-	display: block;
-}
-table tbody tr td.material-details span:nth-child(odd) {
-	background-color: #f0f0f0;
-}
-table tbody tr td.material-details span:nth-child(even) {
-	background-color: #a9ce64;
-}
-tr:nth-child(odd) {
-	background-color: #f0f0f0;
-}
-tr:nth-child(even) {
-	background-color: #a9ce64;
-}
+
 /*=================================================== Navigation =========================================================*/
 section {
 float:left;
 margin-right: 25px;
 }
 section#menu {
-  height: 100%;
+  height: 1700px;
   border-right: thin solid #ccc;
 }
 section#menu ul li {
