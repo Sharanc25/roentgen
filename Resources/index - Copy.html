@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
+<script src="js/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="styles/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/ui.js"></script>
+<script type="text/javascript" src="js/common_functions.js"></script>
+<script type="text/javascript" src="js/scherrer.js"></script>
+<script type="text/javascript" src="js/scherrer_modified.js"></script>
+<script type="text/javascript" src="js/williamson_hall.js"></script>
+<script type="text/javascript" src="js/dislocation_density.js"></script>
+<link href="styles/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="styles/main.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+
+<nav id="windowTitleBar" class="navbar navbar-default ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a id="mainTitle" class="navbar-brand" href="#">Rontgen</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Scherrer Equation</a></li>
+      <li><a href="#">Modified Scherrer Equation</a></li>
+      <li><a href="#">Williamson Hall</a></li>
+      <li><a href="#">Dislocation Density</a></li>
+       
+      </ul>
+
+
+
+
+
+      <ul class="nav navbar-nav navbar-right" >
+       <li><a href="#"><span id="windowMinimize" class="glyphicon glyphicon-minus windowMaxMinButtons" aria-hidden="true"></span></a></li>
+        
+        <li><a href="#"><span class="glyphicon glyphicon-stop windowMaxMinButtons" aria-hidden="true"></span></a></li>
+       <li><a href="#"><span  id="windowClose" class="glyphicon glyphicon-remove windowMaxMinButtons" aria-hidden="true"  ></span></a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+<div class="content" >
+
+
+
+<section id="scherrer-equation-section">
+
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title">Scherrer Equation</h3>
+    </div>
+    <div class="panel-body">
+  
+<div class="scherrer-equation">
+  <div style="font-size: 2em; text-align:center" class="alert alert-info" role="alert"> $ t = \frac{k \times \lambda}{\beta \times cos\theta}$ </div>
+  <div class="alert alert-warning" role="alert">where $t$ is the cystallite size,</div>
+  <form id="scherrer-equation-form" autocomplete="on">
+    <p>
+      <div class="input-group">
+        <label for="number" class="input-group-addon">Shape Factor (k) :</label>
+        <input type="number" class="form-control" name="Shape Factor" id="shape-factor" min="0.89" max="0.94" step="0.001" placeholder="Select One">
+        <span class="input-group-addon">Units If Necessary</span> </div>
+    </p>
+    <p>
+      <div class="input-group">
+        <label for="number2" class="input-group-addon">Wavelength of target material :</label>
+        <select class="btn btn-default dropdown-toggle form-control" id="wavelength">
+          <option value="0.056">Silver (0.056)</option>
+          <option value="0.071">Molybdenum (0.071)</option>
+          <option value="0.154">Copper (0.154)</option>
+          <option value="0.179">Cobalt (0.179)</option>
+          <option value="0.194">Iron (0.194)</option>
+          <option value="0.229">Chromium (0.229)</option>
+          <option value="others">Others</option>
+          </select>
+        <input type="number" name="Wavelength" id="wavelength-other" class="form-control" placeholder="Select One">
+        <span class="input-group-addon">&lambda;(nm)</span> </div>
+    </p>
+    <p>
+      <div class="input-group">
+        <label for="number3" class="input-group-addon">Peak Width :</label>
+        <input type="number" class="form-control" name="Peak Width" id="peak-width" min="0" placeholder="Select One">
+        <span class="input-group-addon"> &beta; (&deg;)</span> </div>
+    </p>
+    <p>
+      <div class="input-group">
+        <label for="number4" class="input-group-addon" >Peak Position :</label>
+        <input type="number" name="Peak Position" id="peak-position" min="0" class="form-control" placeholder="Select One">
+        <span class="input-group-addon">2&theta; (&deg;)</span> </div>
+    </p>
+    <input id="scherrer-calculate" type="submit" class="btn btn-info">
+    </form>
+  <div id="scherrer-result">Crystallite Size = <span> </span></div>
+</div>
+
+<!-- /panel content--></div>
+
+  </div>
+  
+</section>
+
+
+
+
+<section id="modified-scherrer-equation-section">
+
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title">Modified Scherrer Equation</h3>
+    </div>
+    <div class="panel-body">
+  
+<form id="modified-scherrer-form" autocomplete="on">
+  <table width="100%" border="1" class="table">
+    <tr>
+      <th rowspan="2" scope="col"><div align="center">S.No</div></th>
+      <th rowspan="2" scope="col"><div align="center">Base Metal</div>
+        <div align="center">FWHM</div></th>
+      <th colspan="2" scope="col"><div align="center">Observed</div></th>
+      <th rowspan="2"><div align="center">&beta;</div>
+        <div align="center"></div></th>
+      <th rowspan="2"><div align="center">ln &beta;R</div>
+        <div align="center"></div></th>
+      <th rowspan="2"><div align="center">ln(1/cos&theta;)</div>
+        <div align="center"></div></th>
+      </tr>
+    <tr>
+      <td><div align="center">2&theta;</div></td>
+      <td><div align="center">FWHM</div></td>
+      </tr>
+    <tr>
+      <th scope="row"><div align="center">1</div></th>
+      <td><div align="center">
+        <input class="base-metal fwhm" type="number" min="0">
+        </div></td>
+      <td><div align="center">
+        <input class="observed x-position" type="number" min="0">
+        </div></td>
+      <td><div align="center">
+        <input class="observed fwhm" type="number" min="0">
+        </div></td>
+      <td class="corrected-fwhm"><div align="center"></div></td>
+      <td class="y-axis"><div align="center"></div></td>
+      <td class="x-axis"><div align="center"></div></td>
+      </tr>
+    <tr>
+      <th scope="row"><div align="center">2</div></th>
+      <td><div align="center">
+        <input class="base-metal fwhm" type="number" min="0">
+        </div></td>
+      <td><div align="center">
+        <input class="observed x-position" type="number" min="0">
+        </div></td>
+      <td><div align="center">
+        <input class="observed fwhm" type="number" min="0">
+        </div></td>
+      <td class="corrected-fwhm"><div align="center"></div></td>
+      <td class="y-axis"><div align="center"></div></td>
+      <td class="x-axis"><div align="center"></div></td>
+      </tr>
+    <tr>
+      <th scope="row"><div align="center">3</div></th>
+      <td><div align="center">
+        <input class="base-metal fwhm" type="number" min="0">
+        </div></td>
+      <td><div align="center">
+        <input class="observed x-position" type="number" min="0">
+        </div></td>
+      <td><div align="center">
+        <input class="observed fwhm" type="number" min="0">
+        </div></td>
+      <td class="corrected-fwhm"><div align="center"></div></td>
+      <td class="y-axis"><div align="center"></div></td>
+      <td class="x-axis"><div align="center"></div></td>
+      </tr>
+    </table>
+  <p>
+    <input id="scherrer_modified_calculate" type="submit" value="Calculate" class="btn btn-info">
+    </p>
+</form>
+<div id="scherrer-modified-result">
+  <p>Crystallite Size = <span class="crystallite-size"> </span></p>
+</div>
+
+ Panel content </div>
+
+  </div>
+</section>
+
+
+
+
+ <section id="williamson-hall-section">
+ <div class="panel panel-success">
+  <div class="panel-heading">
+    <h3 class="panel-title">Williamson Hall Section</h3>
+  </div>
+  <div class="panel-body">
+ 
+  <form id="williamson-hall-form" autocomplete="on">
+  <table width="100%" border="1">
+    <tr>
+      <th rowspan="2" scope="col"><div align="center">S.NO.</div></th>
+      <th colspan="2" scope="col"><div align="center">Base Metal</div></th>
+      <th colspan="2" scope="col"><div align="center">Observed</div></th>
+      <th rowspan="2"><div align="center">&beta;</div>
+        <div align="center"></div></th>
+      <th rowspan="2"><div align="center">&beta;Cos&theta;</div>
+        <div align="center"></div></th>
+      <th rowspan="2"><div align="center">4Sin&theta;</div>
+        <div align="center"></div></th>
+    </tr>
+    <tr>
+      <td><div align="center">2&theta;</div></td>
+      <td><div align="center">FWHM</div></td>
+      <td><div align="center">2&theta;</div></td>
+      <td><div align="center">FWHM</div></td>
+    </tr>
+    <tr>
+      <th scope="row"><div align="center">1</div></th>
+      <td><div align="center">
+          <input class="base-metal x-position" type="number" min="0">
+        </div></td>
+      <td><div align="center">
+          <input class="base-metal fwhm" type="number" min="0">
+        </div></td>
+      <td><div align="center">
+          <input class="observed x-position" type="number" min="0">
+        </div></td>
+      <td><div align="center">
+          <input class="observed fwhm" type="number" min="0">
+        </div></td>
+      <td class="corrected-fwhm"><div align="center"></div></td>
+      <td class="y-axis"><div align="center"></div></td>
+      <td class="x-axis"><div align="center"></div></td>
+    </tr>
+    <tr>
+      <th scope="row"><div align="center">2</div></th>
+      <td><div align="center">
+          <input class="base-metal x-position" type="number" min="0">
+        </div></td>
+      <td><div align="center">
+          <input class="base-metal fwhm" type="number" min="0">
+        </div></td>
+      <td><div align="center">
+          <input class="observed x-position" type="number" min="0">
+        </div></td>
+      <td><div align="center">
+          <input class="observed fwhm" type="number" min="0">
+        </div></td>
+      <td class="corrected-fwhm"><div align="center"></div></td>
+      <td class="y-axis"><div align="center"></div></td>
+      <td class="x-axis"><div align="center"></div></td>
+    </tr>
+    <tr>
+      <th scope="row"><div align="center">3</div></th>
+      <td><div align="center">
+          <input class="base-metal x-position" type="number" min="0">
+        </div></td>
+      <td><div align="center">
+          <input class="base-metal fwhm" type="number" min="0">
+        </div></td>
+      <td><div align="center">
+          <input class="observed x-position" type="number" min="0">
+        </div></td>
+      <td><div align="center">
+          <input class="observed fwhm" type="number" min="0">
+        </div></td>
+      <td class="corrected-fwhm"><div align="center"></div></td>
+      <td class="y-axis"><div align="center"></div></td>
+      <td class="x-axis"><div align="center"></div></td>
+    </tr>
+  </table>
+      <p>
+    <input id="williamson-hall-calculate" type="submit" value="Calculate" class="btn btn-info">
+  </p>
+</form>
+<div id="williamson-hall-result">
+  <p>Lattice Strain = <span class="lattice-strain"> </span></p>
+  <br />
+  <p>Crystallite Size = <span class="crystallite-size"> </span></p>
+</div>
+</div>
+</div>
+  </section>
+  
+  
+  <section id="dislocation-density-section">
+  
+  <div class="panel panel-success">
+  <div class="panel-heading">
+    <h3 class="panel-title">Dislocation Density Section</h3>
+  </div>
+    <div class="panel-body">
+ <form id="dislocation-density-form" autocomplete="on">
+  <p>
+  <div class="input-group">
+    <label for="fwhm" class="input-group-addon">FWHM:</label>
+    <input type="number" name="number" id="fwhm" class="form-control" >
+    <span class="input-group-addon"> (&Delta;d)</span>
+    </div>
+  </p>
+  <p>
+  <div class="input-group">
+    <label for="d-spacing" class="input-group-addon">d-spacing:</label>
+    <input type="number" name="number2" id="d-spacing" class="form-control">
+    <span class="input-group-addon">(Nano Meters)</span>
+    </div>
+  </p>
+  <p>
+  <div class="input-group">
+    <label for="lattice-parameter" class="input-group-addon" >Lattice Parameter (nm):</label>
+    <input type="number" name="number3" id="lattice-parameter" class="form-control">
+    <span class="input-group-addon">(Nano Meters)</span>
+    </div>
+  </p>
+  <p>
+  <div class="input-group">
+    <label for="h" class="input-group-addon">h:</label>
+    <input type="number" name="number4" id="h" class="form-control">
+    <span class="input-group-addon">Units if Any</span>
+    </div>
+  </p>
+  <p>
+  <div class="input-group">
+    <label for="k" class="input-group-addon">k:</label>
+    <input type="number" name="number5" id="k" class="form-control">
+    <span class="input-group-addon">Units if Any</span>
+    </div>
+  </p>
+  <p>
+  <div class="input-group">
+    <label for="l" class="input-group-addon">l:</label>
+    <input type="number" name="number6" id="l" class="form-control">
+        <span class="input-group-addon">Units if Any</span>
+    </div>
+  </p>
+  <p>
+  <div class="input-group">
+    <label for="a_constant" class="input-group-addon">a:</label>
+    <input type="number" name="number7" id="a_constant" class="form-control">
+        <span class="input-group-addon">Units if Any</span>
+    </div>
+  </p>
+  <p>
+  <div class="input-group">
+    <label for="b_constant" class="input-group-addon">b:</label>
+    <input type="number" name="number8" id="b_constant" class="form-control">
+        <span class="input-group-addon">Units if Any</span>
+    </div>
+  </p>
+  <p>
+  <div class="input-group">
+    <label for="c_constant" class="input-group-addon">c:</label>
+    <input type="number" name="number9" id="c_constant" class="form-control">
+        <span class="input-group-addon">Units if Any</span>
+    </div>
+  </p>
+  <p>
+  <div class="input-group">
+    <label for="d_constant" class="input-group-addon">d:</label>
+    <input type="number" name="number10" id="d_constant" class="form-control">
+        <span class="input-group-addon">Units if Any</span>
+    </div>
+  </p>
+  <p>
+  <div class="input-group">
+    <label for="c11" class="input-group-addon">Youngs Modulus, c<sub>11</sub>:</label>
+    <input type="number" name="number11" id="c11" class="form-control">
+            <span class="input-group-addon">Units if Any</span>
+    </div>
+  </p>
+  <p>
+  <div class="input-group">
+    <label for="c12" class="input-group-addon">Rigidity Modulus, c<sub>12</sub>:</label>
+    <input type="number" name="number12" id="c12" class="form-control">
+            <span class="input-group-addon">Units if Any</span>
+    </div>
+  </p>
+  <p>
+  <div class="input-group">
+    <label for="c44" class="input-group-addon">Bulk Modulus, c<sub>44</sub>:</label>
+    <input type="number" name="number13" id="c44" class="form-control">
+        <span class="input-group-addon">Units if Any</span>
+    </div>
+  </p>
+  <p>
+    <input id="dislocation-density-calculate" type="submit" value="Calculate" class="btn btn-info">
+  </p>
+
+</form>
+<div id="dislocation-density-result">
+  <p>Dislocation Density = <span class="dislocation-density"> </span></p>
+</div>
+
+
+
+ </div>
+
+</div>
+
+  </section>
+</div>
+<script>
+//$("select.chosen").chosen();
+</script>
+</body>
+</html>
+
