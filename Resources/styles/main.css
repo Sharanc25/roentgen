@@ -8,6 +8,7 @@ html, body {
 	background: transparent;
 	cursor: default;
 }
+
 body {
 	overflow: scroll;
 }
